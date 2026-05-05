@@ -1,9 +1,13 @@
 import React, { useState, useMemo } from 'react';
-import VisaoGeral from '../Charts/VisaoGeral';
-import FaltasPorPeriodo from '../Charts/FaltasPorPeriodo';
-import MateriasAltaFalta from '../Charts/MateriasAltaFalta';
+//TODO: Reimplementar VisaoGeral
+//import VisaoGeral from '../Charts/VisaoGeral';
+//TODO: Reimplementar FaltasPorPeriodo 
+//import FaltasPorPeriodo from '../Charts/FaltasPorPeriodo';
+//TODO: Reimplementar MateriasAltaFalta
+//import MateriasAltaFalta from '../Charts/MateriasAltaFalta';
 import FaltasPorDia from '../Charts/FaltasPorDia';
-import TabelaFaltas from '../common/TabelaFaltas';
+//TODO: Reimplementar TabelaFaltas
+//import TabelaFaltas from '../common/TabelaFaltas';
 import data from '../../data/faltas.json';
 import { calcularMetricas } from '../../utils/analytics';
 import { formatarData, formatarPercentual } from '../../utils/formatters';
