@@ -1,0 +1,111 @@
+{
+  "periodos": [
+    {
+      "id": "2024.1",
+      "nome": "2024 - 1º Semestre",
+      "inicio": "2024-02-01",
+      "fim": "2024-07-15"
+    },
+    {
+      "id": "2024.2", 
+      "nome": "2024 - 2º Semestre",
+      "inicio": "2024-08-01",
+      "fim": "2024-12-20"
+    }
+  ],
+  "alunos": [
+    {
+      "id": 1,
+      "matricula": "2021001",
+      "nome": "Ana Silva",
+      "curso": "Ciência da Computação",
+      "totalFaltas": 12
+    },
+    {
+      "id": 2,
+      "matricula": "2021002",
+      "nome": "Pedro Santos",
+      "curso": "Ciência da Computação", 
+      "totalFaltas": 25
+    },
+    {
+      "id": 3,
+      "matricula": "2021003",
+      "nome": "Maria Oliveira",
+      "curso": "Ciência da Computação",
+      "totalFaltas": 8
+    }
+  ],
+  "materias": [
+    {
+      "id": 1,
+      "codigo": "CMP101",
+      "nome": "Algoritmos",
+      "professor": "Dr. Carlos Mendes",
+      "cargaHoraria": 80,
+      "limiteFaltas": 20
+    },
+    {
+      "id": 2,
+      "codigo": "CMP202",
+      "nome": "Estrutura de Dados",
+      "professor": "Dra. Juliana Costa",
+      "cargaHoraria": 80,
+      "limiteFaltas": 20
+    },
+    {
+      "id": 3,
+      "codigo": "CMP303",
+      "nome": "Banco de Dados",
+      "professor": "Dr. Ricardo Alves",
+      "cargaHoraria": 60,
+      "limiteFaltas": 15
+    },
+    {
+      "id": 4,
+      "codigo": "MAT201",
+      "nome": "Cálculo II",
+      "professor": "Dra. Fernanda Lima",
+      "cargaHoraria": 80,
+      "limiteFaltas": 20
+    }
+  ],
+  "registrosFalta": [
+    {
+      "id": 1,
+      "alunoId": 1,
+      "materiaId": 1,
+      "data": "2024-03-15",
+      "periodoId": "2024.1",
+      "aulasFaltadas": 2,
+      "justificativa": null
+    },
+    {
+      "id": 2,
+      "alunoId": 2,
+      "materiaId": 1,
+      "data": "2024-03-15",
+      "periodoId": "2024.1",
+      "aulasFaltadas": 2,
+      "justificativa": "Atestado médico"
+    },
+    {
+      "id": 3,
+      "alunoId": 1,
+      "materiaId": 2,
+      "data": "2024-04-22",
+      "periodoId": "2024.1",
+      "aulasFaltadas": 1,
+      "justificativa": null
+    },
+    {
+      "id": 4,
+      "alunoId": 3,
+      "materiaId": 3,
+      "data": "2024-05-10",
+      "periodoId": "2024.1",
+      "aulasFaltadas": 3,
+      "justificativa": null
+    }
+  ]
+}
