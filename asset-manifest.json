@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "https://seu-usuario.github.io/gestao-faltas/static/css/main.22cffcf0.css",
+    "main.js": "https://seu-usuario.github.io/gestao-faltas/static/js/main.fa8dcacb.js",
+    "index.html": "https://seu-usuario.github.io/gestao-faltas/index.html",
+    "main.22cffcf0.css.map": "https://seu-usuario.github.io/gestao-faltas/static/css/main.22cffcf0.css.map",
+    "main.fa8dcacb.js.map": "https://seu-usuario.github.io/gestao-faltas/static/js/main.fa8dcacb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.22cffcf0.css",
+    "static/js/main.fa8dcacb.js"
+  ]
+}
