@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Users, Settings } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import Sidebar from './components/Layout/Sidebar';
 import Header from './components/Layout/Header';
 import Dashboard from './components/Dashboard/dashboard';
 import RelatorioFaltas from './components/Relatorios/RelatorioFaltas';
+import GestaoAlunos from './components/Alunos/GestaoAlunos';
 import './App.css';
 
 const PlaceholderView = ({ icon: Icon, title, description }) => (
@@ -28,13 +29,7 @@ function App() {
       case 'relatorios':
         return <RelatorioFaltas />;
       case 'alunos':
-        return (
-          <PlaceholderView
-            icon={Users}
-            title="Gestão de Alunos"
-            description="Cadastro, histórico de faltas e acompanhamento individual estarão disponíveis em uma próxima versão."
-          />
-        );
+        return <GestaoAlunos />;
       case 'configuracoes':
         return (
           <PlaceholderView

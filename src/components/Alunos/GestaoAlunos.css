@@ -1,0 +1,318 @@
+.gestao-alunos {
+  max-width: 100%;
+}
+
+.aluno-search-section {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.aluno-search-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+
+.aluno-search-wrapper {
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+  padding: 0 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.aluno-search-wrapper.focused,
+.aluno-search-wrapper:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.aluno-search-icon {
+  color: var(--gray-500);
+  flex-shrink: 0;
+}
+
+.aluno-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.875rem 0.75rem;
+  font-size: 0.95rem;
+  color: var(--dark);
+  outline: none;
+}
+
+.aluno-search-input::placeholder {
+  color: var(--gray-500);
+}
+
+.aluno-search-clear {
+  background: var(--gray-100);
+  border: none;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.aluno-search-clear:hover {
+  background: var(--gray-200);
+}
+
+.aluno-search-results {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  list-style: none;
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 50;
+}
+
+.aluno-search-empty {
+  padding: 1.25rem;
+  text-align: center;
+  color: var(--gray-500);
+  font-size: 0.9rem;
+}
+
+.aluno-search-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.aluno-search-item:hover {
+  background: var(--gray-50);
+}
+
+.aluno-search-avatar {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.aluno-search-nome {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.aluno-search-meta {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  margin-top: 0.1rem;
+}
+
+.aluno-selecionado-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius-lg);
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+}
+
+.aluno-selecionado-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.aluno-selecionado-avatar {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.aluno-selecionado-info h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 0.2rem;
+}
+
+.aluno-selecionado-info p {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+}
+
+.aluno-selecionado-clear {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--gray-200);
+  background: var(--white);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.aluno-selecionado-clear:hover {
+  border-color: var(--gray-300);
+  background: var(--gray-50);
+  color: var(--dark);
+}
+
+.aluno-resumo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.aluno-resumo-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.aluno-resumo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.aluno-resumo-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.aluno-resumo-valor {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.aluno-resumo-sub {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  margin-top: 0.2rem;
+}
+
+.aluno-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.aluno-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: var(--white);
+  border: 1px dashed var(--gray-300);
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+}
+
+.aluno-empty-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--primary-muted);
+  color: var(--primary);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.aluno-empty-state h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.aluno-empty-state p {
+  font-size: 0.9rem;
+  color: var(--gray-500);
+  max-width: 400px;
+}
+
+@media (max-width: 1100px) {
+  .aluno-charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .aluno-selecionado-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .aluno-resumo-grid {
+    grid-template-columns: 1fr;
+  }
+}

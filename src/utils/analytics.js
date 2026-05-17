@@ -1,3 +1,84 @@
+export const DIAS_SEMANA = [
+  'Domingo',
+  'Segunda',
+  'Terça',
+  'Quarta',
+  'Quinta',
+  'Sexta',
+  'Sábado',
+];
+
+export const parseDataLocal = (dataString) => {
+  const [ano, mes, dia] = dataString.split('T')[0].split('-').map(Number);
+  return new Date(ano, mes - 1, dia);
+};
+
+export const calcularMetricasAluno = (data, alunoId, periodoSelecionado) => {
+  const { registrosFalta, materias, alunos } = data;
+  const aluno = alunos.find((a) => a.id === alunoId);
+
+  if (!aluno) return null;
+
+  const registros = registrosFalta.filter(
+    (r) => r.alunoId === alunoId && r.periodoId === periodoSelecionado
+  );
+
+  const totalFaltas = registros.reduce((sum, r) => sum + r.aulasFaltadas, 0);
+
+  const porMateria = materias.map((materia) => {
+    const faltasMateria = registros
+      .filter((r) => r.materiaId === materia.id)
+      .reduce((sum, r) => sum + r.aulasFaltadas, 0);
+
+    return {
+      ...materia,
+      totalFaltas: faltasMateria,
+      percentualLimite:
+        materia.limiteFaltas > 0
+          ? ((faltasMateria / materia.limiteFaltas) * 100).toFixed(1)
+          : 0,
+      status:
+        faltasMateria > materia.limiteFaltas * 0.7 ? 'critico' : 'normal',
+    };
+  });
+
+  const faltasPorDia = new Array(7).fill(0);
+  registros.forEach((registro) => {
+    const diaSemana = parseDataLocal(registro.data).getDay();
+    faltasPorDia[diaSemana] += registro.aulasFaltadas;
+  });
+
+  const porDiaSemana = DIAS_SEMANA.map((dia, index) => ({
+    dia,
+    total: faltasPorDia[index],
+    percentual:
+      totalFaltas > 0
+        ? ((faltasPorDia[index] / totalFaltas) * 100).toFixed(1)
+        : 0,
+  }));
+
+  const registrosDetalhados = registros
+    .map((registro) => {
+      const materia = materias.find((m) => m.id === registro.materiaId);
+      return {
+        ...registro,
+        materiaNome: materia?.nome || '—',
+        materiaCodigo: materia?.codigo || '—',
+      };
+    })
+    .sort((a, b) => new Date(b.data) - new Date(a.data));
+
+  return {
+    aluno,
+    totalFaltas,
+    materiasComFalta: porMateria.filter((m) => m.totalFaltas > 0).length,
+    porMateria: porMateria.filter((m) => m.totalFaltas > 0),
+    porMateriaCompleto: porMateria,
+    porDiaSemana,
+    registros: registrosDetalhados,
+  };
+};
+
 export const calcularMetricas = (data, periodoSelecionado, filtroMateria = 'todas') => {
   const { registrosFalta, materias, alunos } = data;
 
@@ -36,24 +117,14 @@ export const calcularMetricas = (data, periodoSelecionado, filtroMateria = 'toda
     .filter((m) => m.status === 'critico')
     .sort((a, b) => b.percentualLimite - a.percentualLimite);
 
-  const diasSemana = [
-    'Domingo',
-    'Segunda',
-    'Terça',
-    'Quarta',
-    'Quinta',
-    'Sexta',
-    'Sábado',
-  ];
   const faltasPorDia = new Array(7).fill(0);
 
   registrosPeriodo.forEach((registro) => {
-    const dataRegistro = new Date(registro.data);
-    const diaSemana = dataRegistro.getDay();
+    const diaSemana = parseDataLocal(registro.data).getDay();
     faltasPorDia[diaSemana] += registro.aulasFaltadas;
   });
 
-  const porDiaSemana = diasSemana.map((dia, index) => ({
+  const porDiaSemana = DIAS_SEMANA.map((dia, index) => ({
     dia,
     total: faltasPorDia[index],
     percentual:

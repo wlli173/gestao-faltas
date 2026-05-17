@@ -2,7 +2,7 @@ import React from 'react';
 import { CalendarRange, AlertCircle } from 'lucide-react';
 import { getDiaMaisCritico } from '../../utils/analytics';
 
-const FaltasPorDia = ({ dados }) => {
+const FaltasPorDia = ({ dados, subtitulo }) => {
   const diaCritico = getDiaMaisCritico(dados);
   const maxFaltas = Math.max(...dados.map((d) => d.total), 1);
 
@@ -12,7 +12,9 @@ const FaltasPorDia = ({ dados }) => {
         <CalendarRange size={20} className="chart-card-icon" />
         <div>
           <h3>Faltas por Dia da Semana</h3>
-          <p className="chart-card-subtitle">Distribuição semanal das ocorrências</p>
+          <p className="chart-card-subtitle">
+            {subtitulo || 'Distribuição semanal das ocorrências'}
+          </p>
         </div>
       </div>
 
