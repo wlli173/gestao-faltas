@@ -11,6 +11,7 @@ import data from '../../data/faltas.json';
 import { calcularMetricasAluno, getDiaMaisCritico } from '../../utils/analytics';
 import FaltasAlunoMaterias from '../Charts/FaltasAlunoMaterias';
 import FaltasPorDia from '../Charts/FaltasPorDia';
+import HistoricoFaltasAluno from '../Charts/HistoricoFaltasAluno';
 import '../Charts/Charts.css';
 import './GestaoAlunos.css';
 
@@ -232,6 +233,11 @@ const GestaoAlunos = () => {
               subtitulo={`Dias em que ${alunoSelecionado.nome.split(' ')[0]} mais falta`}
             />
           </div>
+
+          <HistoricoFaltasAluno
+            registros={metricas.registros}
+            alunoNome={alunoSelecionado.nome}
+          />
         </>
       ) : (
         <div className="aluno-empty-state">
