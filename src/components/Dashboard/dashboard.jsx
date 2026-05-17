@@ -1,53 +1,48 @@
 import React, { useState, useMemo } from 'react';
-//TODO: Reimplementar VisaoGeral
-//import VisaoGeral from '../Charts/VisaoGeral';
-//TODO: Reimplementar FaltasPorPeriodo 
-//import FaltasPorPeriodo from '../Charts/FaltasPorPeriodo';
-//TODO: Reimplementar MateriasAltaFalta
-//import MateriasAltaFalta from '../Charts/MateriasAltaFalta';
+import VisaoGeral from '../Charts/VisaoGeral';
+import FaltasPorPeriodo from '../Charts/FaltasPorPeriodo';
+import MateriasAltaFalta from '../Charts/MateriasAltaFalta';
 import FaltasPorDia from '../Charts/FaltasPorDia';
-//TODO: Reimplementar TabelaFaltas
-//import TabelaFaltas from '../common/TabelaFaltas';
+import TabelaFaltas from '../common/TabelaFaltas';
 import data from '../../data/faltas.json';
 import { calcularMetricas } from '../../utils/analytics';
-import { formatarData, formatarPercentual } from '../../utils/formatters';
+import '../Charts/Charts.css';
 import './Dashboard.css';
 
 const Dashboard = () => {
   const [periodoSelecionado, setPeriodoSelecionado] = useState('2024.1');
   const [filtroMateria, setFiltroMateria] = useState('todas');
-  
-  const metricas = useMemo(() => 
-    calcularMetricas(data, periodoSelecionado, filtroMateria), 
+
+  const metricas = useMemo(
+    () => calcularMetricas(data, periodoSelecionado, filtroMateria),
     [periodoSelecionado, filtroMateria]
   );
 
   const materiasOptions = [
     { value: 'todas', label: 'Todas as Matérias' },
-    ...data.materias.map(m => ({
+    ...data.materias.map((m) => ({
       value: m.id,
-      label: `${m.codigo} - ${m.nome}`
-    }))
+      label: `${m.codigo} - ${m.nome}`,
+    })),
   ];
 
   return (
-    <div className="dashboard">
-      <div className="dashboard-header">
-        <div className="header-info">
+    <div className="dashboard page-enter">
+      <div className="page-header">
+        <div className="page-header-text">
           <h1>Dashboard de Faltas</h1>
-          <p className="header-description">
-            Visão geral das faltas no período selecionado
-          </p>
+          <p>Visão consolidada das ocorrências no período selecionado</p>
         </div>
-        <div className="header-controls">
+        <div className="page-header-controls">
           <div className="control-group">
-            <label>Período</label>
-            <select 
+            <label htmlFor="periodo-select">Período</label>
+            <select
+              id="periodo-select"
               value={periodoSelecionado}
               onChange={(e) => setPeriodoSelecionado(e.target.value)}
               className="control-select"
             >
-              {data.periodos.map(periodo => (
+              {data.periodos.map((periodo) => (
                 <option key={periodo.id} value={periodo.id}>
                   {periodo.nome}
                 </option>
@@ -55,13 +50,14 @@ const Dashboard = () => {
             </select>
           </div>
           <div className="control-group">
-            <label>Matéria</label>
-            <select 
+            <label htmlFor="materia-select">Matéria</label>
+            <select
+              id="materia-select"
               value={filtroMateria}
               onChange={(e) => setFiltroMateria(e.target.value)}
               className="control-select"
             >
-              {materiasOptions.map(opcao => (
+              {materiasOptions.map((opcao) => (
                 <option key={opcao.value} value={opcao.value}>
                   {opcao.label}
                 </option>
@@ -74,10 +70,7 @@ const Dashboard = () => {
       <VisaoGeral metricas={metricas.geral} />
 
       <div className="dashboard-grid">
-        <FaltasPorPeriodo 
-          dados={metricas.porPeriodo} 
-          periodo={periodoSelecionado}
-        />
+        <FaltasPorPeriodo dados={metricas.porPeriodo} />
         <MateriasAltaFalta dados={metricas.materiasCriticas} />
       </div>
 
@@ -85,13 +78,7 @@ const Dashboard = () => {
         <FaltasPorDia dados={metricas.porDiaSemana} />
       </div>
 
-      <div className="dashboard-table">
-        <TabelaFaltas 
-          dados={metricas.registros}
-          materias={data.materias}
-          alunos={data.alunos}
-        />
-      </div>
+      <TabelaFaltas dados={metricas.registros} />
     </div>
   );
 };

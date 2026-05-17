@@ -1,16 +1,15 @@
 .stat-card {
   background: var(--white);
   border-radius: var(--border-radius);
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
-  transition: all 0.3s ease;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s, transform 0.2s;
   border: 1px solid var(--gray-200);
-  cursor: default;
 }
 
 .stat-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
 }
 
 .stat-card-header {
@@ -21,19 +20,18 @@
 }
 
 .stat-icon {
-  font-size: 1.5rem;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .tendencia-badge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
   font-weight: 600;
 }
 
@@ -48,20 +46,49 @@
 }
 
 .stat-label {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--gray-500);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
   font-weight: 500;
 }
 
 .stat-value {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  margin: 0.25rem 0;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .stat-subtext {
   font-size: 0.75rem;
   color: var(--gray-500);
-  margin-top: 0.25rem;
+  margin-top: 0.35rem;
+}
+
+.aulas-badge {
+  background: var(--gray-100);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.status-badge {
+  padding: 0.2rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-justificada {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.status-pendente {
+  background: var(--warning-light);
+  color: #92400e;
 }

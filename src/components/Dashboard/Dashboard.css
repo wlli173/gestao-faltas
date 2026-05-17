@@ -1,107 +1,16 @@
-.dashboard {
-  animation: fadeIn 0.5s ease-out;
-}
-
-.dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 2rem;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.header-info h1 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--dark);
-  margin-bottom: 0.5rem;
-}
-
-.header-description {
-  color: var(--gray-500);
-  font-size: 0.95rem;
-}
-
-.header-controls {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-end;
-}
-
-.control-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.control-group label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--gray-500);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.control-select {
-  padding: 0.625rem 2rem 0.625rem 1rem;
-  border: 2px solid var(--gray-200);
-  border-radius: 10px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  background: var(--white);
-  color: var(--dark);
-  cursor: pointer;
-  transition: all 0.2s;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
-}
-
-.control-select:hover {
-  border-color: var(--primary);
-}
-
-.control-select:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
 .dashboard-grid-full {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
-.dashboard-table {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .dashboard-grid {
     grid-template-columns: 1fr;
-  }
-  
-  .dashboard-header {
-    flex-direction: column;
-  }
-  
-  .header-controls {
-    width: 100%;
-    flex-direction: column;
-  }
-  
-  .control-select {
-    width: 100%;
   }
 }

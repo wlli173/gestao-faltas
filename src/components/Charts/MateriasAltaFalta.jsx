@@ -1,43 +1,51 @@
-// src/components/Charts/MateriasAltaFalta.jsx
 import React from 'react';
+import { AlertTriangle, CheckCircle2 } from 'lucide-react';
 
 const MateriasAltaFalta = ({ dados }) => {
-  if (dados.length === 0) {
-    return (
-      <div className="chart-container">
-        <h2>📚 Matérias com Alto Índice de Falta</h2>
-        <div className="alert-success">
-          Nenhuma matéria em estado crítico! 🎉
+  return (
+    <div className="chart-card">
+      <div className="chart-card-header">
+        <AlertTriangle size={20} className="chart-card-icon" />
+        <div>
+          <h3>Matérias em Alerta</h3>
+          <p className="chart-card-subtitle">Acima de 70% do limite de faltas</p>
         </div>
       </div>
-    );
-  }
 
-  return (
-    <div className="chart-container">
-      <h2>📚 Matérias com Alto Índice de Falta</h2>
-      <div className="materias-lista">
-        {dados.map(materia => (
-          <div key={materia.id} className="materia-item critico">
-            <div className="materia-info">
-              <h3>{materia.nome}</h3>
-              <span className="materia-codigo">{materia.codigo}</span>
-              <span className="materia-professor">{materia.professor}</span>
-            </div>
-            <div className="materia-metricas">
-              <div className="progress-bar">
-                <div 
-                  className="progress-fill danger"
-                  style={{ width: `${materia.percentualLimite}%` }}
-                />
+      {dados.length === 0 ? (
+        <div className="chart-success">
+          <CheckCircle2 size={20} style={{ verticalAlign: 'middle', marginRight: 6 }} />
+          Nenhuma matéria em estado crítico no período.
+        </div>
+      ) : (
+        <div className="materias-lista">
+          {dados.map((materia) => (
+            <div key={materia.id} className="materia-item critico">
+              <div className="materia-info">
+                <h4>{materia.nome}</h4>
+                <div className="materia-meta">
+                  <span className="materia-codigo-tag">{materia.codigo}</span>
+                  <span className="materia-professor">{materia.professor}</span>
+                </div>
               </div>
-              <span className="metricas-texto">
-                {materia.totalFaltas} de {materia.limiteFaltas} faltas ({materia.percentualLimite}%)
-              </span>
+              <div className="materia-metricas">
+                <div className="progress-bar">
+                  <div
+                    className="progress-fill danger"
+                    style={{ width: `${Math.min(materia.percentualLimite, 100)}%` }}
+                  />
+                </div>
+                <span className="metricas-texto">
+                  {materia.totalFaltas} de {materia.limiteFaltas} faltas (
+                  {materia.percentualLimite}%)
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
+
+export default MateriasAltaFalta;

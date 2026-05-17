@@ -3,9 +3,9 @@ import './Common.css';
 
 const Card = ({ titulo, valor, icone, cor, tendencia, subtexto }) => {
   return (
-    <div className="stat-card fade-in">
+    <div className="stat-card">
       <div className="stat-card-header">
-        <div className="stat-icon" style={{ background: `${cor}15`, color: cor }}>
+        <div className="stat-icon" style={{ background: `${cor}14`, color: cor }}>
           {icone}
         </div>
         {tendencia && (
@@ -16,7 +16,7 @@ const Card = ({ titulo, valor, icone, cor, tendencia, subtexto }) => {
       </div>
       <div className="stat-card-body">
         <p className="stat-label">{titulo}</p>
-        <h3 className="stat-value" style={{ color: cor }}>{valor}</h3>
+        <h3 className="stat-value">{valor}</h3>
         {subtexto && <p className="stat-subtext">{subtexto}</p>}
       </div>
     </div>

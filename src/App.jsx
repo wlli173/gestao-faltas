@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
+import { Users, Settings } from 'lucide-react';
 import Sidebar from './components/Layout/Sidebar';
 import Header from './components/Layout/Header';
-import Dashboard from './components/Dashboard/Dashboard';
+import Dashboard from './components/Dashboard/dashboard';
 import RelatorioFaltas from './components/Relatorios/RelatorioFaltas';
 import './App.css';
+
+const PlaceholderView = ({ icon: Icon, title, description }) => (
+  <div className="placeholder-view page-enter">
+    <div className="placeholder-icon">
+      <Icon size={28} />
+    </div>
+    <h2>{title}</h2>
+    <p>{description}</p>
+    <span className="placeholder-badge">Em desenvolvimento</span>
+  </div>
+);
 
 function App() {
   const [activeView, setActiveView] = useState('dashboard');
@@ -17,17 +29,19 @@ function App() {
         return <RelatorioFaltas />;
       case 'alunos':
         return (
-          <div className="placeholder-view">
-            <h2>👥 Gestão de Alunos</h2>
-            <p>Em desenvolvimento...</p>
-          </div>
+          <PlaceholderView
+            icon={Users}
+            title="Gestão de Alunos"
+            description="Cadastro, histórico de faltas e acompanhamento individual estarão disponíveis em uma próxima versão."
+          />
         );
       case 'configuracoes':
         return (
-          <div className="placeholder-view">
-            <h2>⚙️ Configurações</h2>
-            <p>Em desenvolvimento...</p>
-          </div>
+          <PlaceholderView
+            icon={Settings}
+            title="Configurações"
+            description="Parâmetros do curso, limites de faltas e preferências do sistema serão configuráveis aqui."
+          />
         );
       default:
         return <Dashboard />;
@@ -36,20 +50,18 @@ function App() {
 
   return (
     <div className="app">
-      <Sidebar 
+      <Sidebar
         activeView={activeView}
         setActiveView={setActiveView}
         collapsed={sidebarCollapsed}
         setCollapsed={setSidebarCollapsed}
       />
       <div className={`main-content ${sidebarCollapsed ? 'expanded' : ''}`}>
-        <Header 
+        <Header
           activeView={activeView}
           toggleSidebar={() => setSidebarCollapsed(!sidebarCollapsed)}
         />
-        <main className="content-area">
-          {renderContent()}
-        </main>
+        <main className="content-area">{renderContent()}</main>
       </div>
     </div>
   );

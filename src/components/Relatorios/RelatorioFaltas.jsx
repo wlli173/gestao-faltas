@@ -1,13 +1,20 @@
 import React, { useState, useMemo } from 'react';
-import { Download, Filter, Printer, FileText, TrendingUp, AlertTriangle } from 'lucide-react';
+import {
+  Download,
+  Filter,
+  Printer,
+  FileText,
+  TrendingUp,
+  AlertTriangle,
+  BarChart2,
+} from 'lucide-react';
 import data from '../../data/faltas.json';
 import { calcularMetricas } from '../../utils/analytics';
-import { formatarData, formatarPercentual } from '../../utils/formatters';
+import { formatarData } from '../../utils/formatters';
 import './RelatorioFaltas.css';
 
 const RelatorioFaltas = () => {
   const [periodoSelecionado, setPeriodoSelecionado] = useState('2024.1');
-  const [tipoRelatorio, setTipoRelatorio] = useState('geral');
   const [filtrosAvancados, setFiltrosAvancados] = useState({
     materia: 'todas',
     statusFalta: 'todas',
@@ -155,14 +162,11 @@ const RelatorioFaltas = () => {
   };
 
   return (
-    <div className="relatorio-faltas">
-      {/* Cabeçalho do Relatório */}
-      <div className="relatorio-header">
-        <div className="relatorio-title-section">
+    <div className="relatorio-faltas page-enter">
+      <div className="page-header">
+        <div className="page-header-text">
           <h1>Relatórios de Faltas</h1>
-          <p className="relatorio-subtitle">
-            Gere relatórios detalhados sobre as faltas dos alunos
-          </p>
+          <p>Gere relatórios detalhados e exporte os dados do período</p>
         </div>
         
         <div className="relatorio-actions">
@@ -196,7 +200,7 @@ const RelatorioFaltas = () => {
       {/* Cards de Estatísticas */}
       <div className="estatisticas-grid">
         <div className="estatistica-card">
-          <div className="estatistica-icon" style={{ background: '#3b82f615', color: '#3b82f6' }}>
+          <div className="estatistica-icon" style={{ background: 'var(--primary-muted)', color: 'var(--primary)' }}>
             <FileText size={24} />
           </div>
           <div className="estatistica-info">
@@ -206,7 +210,7 @@ const RelatorioFaltas = () => {
         </div>
 
         <div className="estatistica-card">
-          <div className="estatistica-icon" style={{ background: '#10b98115', color: '#10b981' }}>
+          <div className="estatistica-icon" style={{ background: 'var(--success-light)', color: 'var(--success)' }}>
             <TrendingUp size={24} />
           </div>
           <div className="estatistica-info">
@@ -216,7 +220,7 @@ const RelatorioFaltas = () => {
         </div>
 
         <div className="estatistica-card">
-          <div className="estatistica-icon" style={{ background: '#f59e0b15', color: '#f59e0b' }}>
+          <div className="estatistica-icon" style={{ background: 'var(--warning-light)', color: 'var(--warning)' }}>
             <AlertTriangle size={24} />
           </div>
           <div className="estatistica-info">
@@ -230,7 +234,7 @@ const RelatorioFaltas = () => {
         </div>
 
         <div className="estatistica-card">
-          <div className="estatistica-icon" style={{ background: '#8b5cf615', color: '#8b5cf6' }}>
+          <div className="estatistica-icon" style={{ background: 'var(--primary-muted)', color: 'var(--primary-dark)' }}>
             <Filter size={24} />
           </div>
           <div className="estatistica-info">
@@ -424,7 +428,10 @@ const RelatorioFaltas = () => {
       {/* Seção de Análise */}
       <div className="analise-section">
         <div className="analise-card">
-          <h3>📊 Análise do Período</h3>
+          <h3 className="analise-title">
+            <BarChart2 size={18} />
+            Análise do Período
+          </h3>
           <div className="analise-grid">
             <div className="analise-item">
               <span className="analise-label">Matéria com mais faltas</span>
